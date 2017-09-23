@@ -1,0 +1,320 @@
+-- phpMyAdmin SQL Dump
+-- version 4.3.11
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Aug 22, 2017 at 12:57 PM
+-- Server version: 5.6.24
+-- PHP Version: 5.5.24
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `stu`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `address`
+--
+
+CREATE TABLE IF NOT EXISTS `address` (
+  `addr_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `addr_1` varchar(100) NOT NULL,
+  `addr_city` char(50) NOT NULL,
+  `addr_zip` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course`
+--
+
+CREATE TABLE IF NOT EXISTS `course` (
+  `course_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `course_desc` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `education`
+--
+
+CREATE TABLE IF NOT EXISTS `education` (
+  `edu_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `edu_type` varchar(100) NOT NULL,
+  `edu_inst` varchar(100) NOT NULL,
+  `edu_date_comp` date NOT NULL,
+  `edu_gpa` varchar(10) NOT NULL,
+  `edu_desc` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobhistory`
+--
+
+CREATE TABLE IF NOT EXISTS `jobhistory` (
+  `job_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `job_status` char(100) NOT NULL,
+  `job_org` char(100) NOT NULL,
+  `job_post` char(100) NOT NULL,
+  `job_sal` varchar(50) NOT NULL,
+  `job_loc` varchar(100) NOT NULL,
+  `job_dur` varchar(50) NOT NULL,
+  `job_comm` char(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `links`
+--
+
+CREATE TABLE IF NOT EXISTS `links` (
+  `link_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `link_facebook` varchar(255) NOT NULL,
+  `link_linkedin` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `publication`
+--
+
+CREATE TABLE IF NOT EXISTS `publication` (
+  `pub_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `pub_date` date NOT NULL,
+  `pub_loc` varchar(100) NOT NULL,
+  `pub_topic` varchar(100) NOT NULL,
+  `pub_desc` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reference`
+--
+
+CREATE TABLE IF NOT EXISTS `reference` (
+  `ref_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `ref_desc` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `registration`
+--
+
+CREATE TABLE IF NOT EXISTS `registration` (
+  `user_id` int(11) NOT NULL,
+  `user_name` char(50) NOT NULL,
+  `user_email` varchar(100) NOT NULL,
+  `user_pass` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `registration`
+--
+
+INSERT INTO `registration` (`user_id`, `user_name`, `user_email`, `user_pass`) VALUES
+(1, 'Ahmed', 'ahmed@yahoo.com', '123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `skill`
+--
+
+CREATE TABLE IF NOT EXISTS `skill` (
+  `skill_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `skill_list` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `u_id` int(11) NOT NULL,
+  `u_fname` char(100) DEFAULT NULL,
+  `u_lname` char(100) NOT NULL,
+  `u_emailaddr1` varchar(100) NOT NULL,
+  `u_emailaddr2` varchar(100) NOT NULL,
+  `u_gender` char(100) NOT NULL,
+  `u_marital` char(50) NOT NULL,
+  `u_religion` varchar(100) NOT NULL,
+  `u_tel` char(100) DEFAULT NULL,
+  `u_dob` datetime DEFAULT NULL,
+  `u_nid` int(12) NOT NULL,
+  `u_passport` int(12) NOT NULL,
+  `u_comment` char(250) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `workexperience`
+--
+
+CREATE TABLE IF NOT EXISTS `workexperience` (
+  `w_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
+  `w_exp` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `address`
+--
+ALTER TABLE `address`
+  ADD PRIMARY KEY (`addr_id`);
+
+--
+-- Indexes for table `course`
+--
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`course_id`);
+
+--
+-- Indexes for table `education`
+--
+ALTER TABLE `education`
+  ADD PRIMARY KEY (`edu_id`);
+
+--
+-- Indexes for table `jobhistory`
+--
+ALTER TABLE `jobhistory`
+  ADD PRIMARY KEY (`job_id`);
+
+--
+-- Indexes for table `links`
+--
+ALTER TABLE `links`
+  ADD PRIMARY KEY (`link_id`);
+
+--
+-- Indexes for table `publication`
+--
+ALTER TABLE `publication`
+  ADD PRIMARY KEY (`pub_id`);
+
+--
+-- Indexes for table `reference`
+--
+ALTER TABLE `reference`
+  ADD PRIMARY KEY (`ref_id`);
+
+--
+-- Indexes for table `registration`
+--
+ALTER TABLE `registration`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `skill`
+--
+ALTER TABLE `skill`
+  ADD PRIMARY KEY (`skill_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`u_id`);
+
+--
+-- Indexes for table `workexperience`
+--
+ALTER TABLE `workexperience`
+  ADD PRIMARY KEY (`w_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `address`
+--
+ALTER TABLE `address`
+  MODIFY `addr_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `course`
+--
+ALTER TABLE `course`
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `education`
+--
+ALTER TABLE `education`
+  MODIFY `edu_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `jobhistory`
+--
+ALTER TABLE `jobhistory`
+  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `links`
+--
+ALTER TABLE `links`
+  MODIFY `link_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `publication`
+--
+ALTER TABLE `publication`
+  MODIFY `pub_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `reference`
+--
+ALTER TABLE `reference`
+  MODIFY `ref_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `registration`
+--
+ALTER TABLE `registration`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `skill`
+--
+ALTER TABLE `skill`
+  MODIFY `skill_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `workexperience`
+--
+ALTER TABLE `workexperience`
+  MODIFY `w_id` int(11) NOT NULL AUTO_INCREMENT;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
